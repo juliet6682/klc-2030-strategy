@@ -1,6 +1,6 @@
 /* Each illustration is a content diagram tied to an explicit passage, not a motif. */
 (() => {
-  const visual = (title, intro, body, caption = '') => `<aside class="explain-visual" aria-label="${title}"><h3>${title}</h3><p>${intro}</p>${body}${caption ? `<p class="explain-caption">${caption}</p>` : ''}</aside>`;
+  const visual = (title, intro, body, caption = '') => `<aside class="explain-visual" aria-label="資訊圖：${title}"><span class="explain-kicker">本章資訊圖 · VISUAL EXPLAINER</span><h3>${title}</h3><p>${intro}</p>${body}${caption ? `<p class="explain-caption">${caption}</p>` : ''}</aside>`;
   const node = (tag, title, detail, kind = '') => `<div class="explain-node ${kind}"><em>${tag}</em><b>${title}</b><span>${detail}</span></div>`;
   const page = key => document.querySelector(`[data-route-page="${key}"]`);
   const panelByEyebrow = (root, text) => [...root.querySelectorAll('.panel')].find(p => p.querySelector(':scope > .eyebrow')?.textContent.trim() === text);
@@ -15,7 +15,7 @@
   ));
 
   const a = page('a');
-  panelByEyebrow(a, 'Mission')?.closest('.grid2')?.insertAdjacentHTML('afterend', visual(
+  a?.querySelector('.chapter-intro')?.insertAdjacentHTML('afterend', visual(
     '使命如何影響一個產品選型決策？',
     '客戶提出的規格是起點，不直接等同最適合的加熱方案。',
     `<div class="decision-workbench"><div class="decision-input"><em>先確認客戶情境</em><b>應用需求</b><div><span>升溫與環境</span><span>成本條件</span><span>品質要求</span></div></div><div class="decision-evaluate"><em>再比較與取捨</em><b>可行加熱方式</b><span>專業技術 × 客製化能力</span><strong>品質可靠性是決策底線</strong></div><div class="decision-result"><em>最後才選型</em><b>合適方案與可靠交付</b><span>降低客戶成本與風險，建立長期信任</span></div></div>`,
@@ -23,8 +23,7 @@
   ));
 
   const b = page('b');
-  const logic = b?.querySelector('.logic')?.closest('.panel');
-  logic?.insertAdjacentHTML('afterend', visual(
+  b?.querySelector('.chapter-intro')?.insertAdjacentHTML('afterend', visual(
     '為什麼增加詢價，還不能解除成長瓶頸？',
     '把表面現象、真正原因與資源選擇放在同一條因果鏈，避免直接從問題跳到工作清單。',
     `<div class="diagnosis-map"><div><em>看見的現象</em><span>缺少一線車廠案例</span><span>新產品仍在驗證</span><span>大量市場的成本限制</span></div><div class="diagnosis-root"><em>共同根因</em><b>尚未成為車廠願意長期採用、可大量量產的核心供應夥伴</b></div><div><em>資源應投向</em><span>Non-PTC Coolant 成長引擎</span><span>OEM＋Tier 1 信任與車用能力</span><span>核心掌握 × 全球供應鏈整合</span></div></div>`,
@@ -32,7 +31,7 @@
   ));
 
   const c = page('c');
-  c?.querySelector('.stage-explainer')?.closest('.grid2')?.insertAdjacentHTML('afterend', visual(
+  c?.querySelector('.chapter-intro')?.insertAdjacentHTML('afterend', visual(
     '如何判斷本週工作真的推進了 Stage？',
     '以 Coolant Heater 的 Sample → Validation 為閱讀示例：工作要能指向下一個可查證結果。',
     `<div class="evidence-bridge"><div class="evidence-stage"><em>目前 Stage</em><b>Sample</b><span>樣品導入；確認現況與基準</span></div><div class="evidence-gate"><em>本週要跨過的關卡</em><b>Next Action → 可查證證據</b><span>處理驗證 Blocker，明確 Owner 與期限</span><span>客戶驗證進展留在 CRM 或正式專案紀錄</span><small>只有活動量、沒有可驗證結果，仍留在原 Stage</small></div><div class="evidence-stage is-next"><em>下一個結果</em><b>Validation</b><span>依專案核定 Gate 判斷是否進入驗證推進</span></div></div>`,
@@ -40,7 +39,7 @@
   ));
 
   const d = page('d');
-  panelByEyebrow(d, '12-week Rule')?.closest('.grid2')?.insertAdjacentHTML('afterend', visual(
+  d?.querySelector('.d-hero')?.insertAdjacentHTML('afterend', visual(
     '一筆進展如何成為有效積分？',
     '把公平、證據與優勝條件放在同一個判斷流程；不是做了活動就直接加分。',
     `<div class="explain-flow">${node('WEEK 0', '凍結 Baseline Stage', '只計入遊戲啟動後的新進展')}${node('每週審核', '檢查新 Stage 與證據', '客戶、樣品、驗證或系統紀錄須可查證', 'is-gate')}${node('積分回饋', '依里程碑權重計分', '越接近 Design-in、Nomination，權重越高')}${node('勝出門檻', '總分最高且實質推進', '不能只靠 CRM 維護分取得優勝', 'is-outcome')}</div>`
@@ -53,4 +52,14 @@
     `<div class="explain-map">${node('方向與原則', '藍圖', '願景、使命、價值觀與特定時期的經營目標')}${node('瓶頸與取捨', '戰略計畫', 'Situation → Root Cause → Purpose → Core Strategy')}${node('標的與責任', '戰術計畫', '生產型量化產出；發展型建立能力與狀態改變')}${node('日常落地', '營運計畫', '排程、SOP、KPI 追蹤與管理工具')}</div>`,
     'D 團隊遊戲用於強化 C 的關鍵行為；E 提供各層用詞的正式定義，不是另一層計畫。'
   ));
+
+  for (const route of ['home', 'a', 'b', 'c', 'd', 'e']) {
+    const section = page(route);
+    const chart = section?.querySelector('.explain-visual');
+    if (!chart) continue;
+    chart.id = `insight-${route}`;
+    const lead = route === 'home' ? section.querySelector('.story-hero-copy') : section.querySelector('.page-titlebar .copy');
+    lead?.insertAdjacentHTML('beforeend', `<a class="insight-jump" href="#insight-${route}">查看${route === 'home' ? '策略' : '本章'}資訊圖 <span aria-hidden="true">↓</span></a>`);
+  }
+  if (location.hash.startsWith('#insight-')) document.querySelector(location.hash)?.scrollIntoView();
 })();
