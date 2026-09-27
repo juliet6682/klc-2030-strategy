@@ -192,6 +192,19 @@ body[data-route="a"] .panel{border-top:4px solid rgba(61,157,221,.18)}body[data-
 .explain-choice{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.explain-choice .explain-node::after{content:none}
 @media(max-width:800px){.explain-flow{grid-template-columns:repeat(2,minmax(0,1fr))}.explain-node:nth-child(2)::after{content:none}.explain-map{grid-template-columns:repeat(2,minmax(0,1fr))}.explain-choice{grid-template-columns:1fr}}
 @media(max-width:560px){.explain-visual{padding:15px}.explain-flow{grid-template-columns:1fr}.explain-node:not(:last-child)::after{content:'↓';right:auto;left:50%;top:auto;bottom:-14px;transform:translateX(-50%)}.explain-contrast{grid-template-columns:1fr}.explain-contrast>.explain-arrow{justify-self:center;transform:rotate(90deg)}.explain-map{grid-template-columns:1fr 1fr}.explain-node{padding:12px}.explain-node b{font-size:14px}}
+.explain-map .explain-node:not(:last-child)::after{content:none}
+.decision-workbench,.diagnosis-map,.evidence-bridge{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:12px;align-items:stretch}
+.decision-workbench>div,.diagnosis-map>div,.evidence-bridge>div{border:1.5px solid #d8e7ec;border-radius:17px;background:#fff;padding:15px;min-width:0}
+.decision-workbench em,.diagnosis-map em,.evidence-bridge em{display:block;font-style:normal;color:#357b9b;font-size:11px;font-weight:850;letter-spacing:.05em;margin-bottom:6px}
+.decision-workbench b,.diagnosis-map b,.evidence-bridge b{display:block;color:#254b68;font-size:15px;line-height:1.4;margin-bottom:7px}
+.decision-workbench span,.diagnosis-map span,.evidence-bridge span{display:block;color:#526f82;font-size:12px;line-height:1.5}
+.decision-input>div{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}.decision-input>div span{padding:5px 7px;border-radius:8px;background:#e9f3f7}
+.decision-evaluate{background:#fff8e8!important;border-color:#ebd6a1!important}.decision-evaluate strong{display:block;padding:7px 9px;margin-top:12px;background:#f4e4bb;border-radius:8px;color:#745829;font-size:12px}
+.decision-result,.evidence-stage.is-next{background:#ecf7f5!important;border-color:#b8dcd2!important}
+.diagnosis-map>div:first-child span,.diagnosis-map>div:last-child span{padding:6px 0;border-bottom:1px solid #e4edf0}.diagnosis-map>div span:last-child{border:0}
+.diagnosis-root{display:flex;flex-direction:column;justify-content:center;background:#fff8e8!important;border-color:#ebd6a1!important;text-align:center}.diagnosis-root b{font-size:16px}
+.evidence-stage{display:flex;flex-direction:column;justify-content:center}.evidence-stage b{font-size:21px}.evidence-gate{background:#fff8e8!important;border-color:#ebd6a1!important}.evidence-gate span{padding:5px 0}.evidence-gate small{display:block;margin-top:9px;color:#966b36;font-size:11px;font-weight:750;line-height:1.5}
+@media(max-width:800px){.decision-workbench,.diagnosis-map,.evidence-bridge{grid-template-columns:1fr}.decision-workbench>div,.diagnosis-map>div,.evidence-bridge>div{padding:13px}}
 </style></head><body data-audience="board"><header class="site-header"><div class="site-header-inner"><a class="brand" href="/"><span class="brand-mark">KLC</span><span>KLC 2030<small>Strategy Storybook</small></span></a><nav class="site-nav"><a class="" href="/">首頁</a><a class="" href="/a/">A 藍圖</a><a class="" href="/b/">B 戰略</a><a class="" href="/c/">C 戰術</a><a class="" href="/d/">D 團隊遊戲</a><a class="" href="/e/">E 知識定義</a></nav><div class="header-tools"><button class="aud-btn" data-aud="board" type="button">董事會</button><button class="aud-btn" data-aud="manager" type="button">主管</button><button class="aud-btn" data-aud="staff" type="button">職員</button><button class="print-btn" type="button">列印</button></div></div></header><main class="wrap"><section data-route-page="home" hidden=""><section class="story-hero">
   <div class="story-hero-copy">
     <span class="chip">KLC 2030 Strategy Storybook</span>

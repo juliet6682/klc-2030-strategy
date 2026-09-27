@@ -18,7 +18,7 @@
   panelByEyebrow(a, 'Mission')?.insertAdjacentHTML('beforeend', visual(
     '使命如何影響一個產品選型決策？',
     '客戶提出的規格是起點，不直接等同最適合的加熱方案。',
-    `<div class="explain-flow">${node('客戶情境', '先理解應用', '確認升溫、環境、成本與品質條件')}${node('方案比較', '比較可行加熱方式', '用技術與客製化能力檢查適配性')}${node('價值觀關卡', '守住可靠品質', '不以低價作為唯一決策依據', 'is-gate')}${node('交付結果', '選對方案並可靠交付', '降低客戶成本與風險，建立長期信任', 'is-outcome')}</div>`,
+    `<div class="decision-workbench"><div class="decision-input"><em>先確認客戶情境</em><b>應用需求</b><div><span>升溫與環境</span><span>成本條件</span><span>品質要求</span></div></div><div class="decision-evaluate"><em>再比較與取捨</em><b>可行加熱方式</b><span>專業技術 × 客製化能力</span><strong>品質可靠性是決策底線</strong></div><div class="decision-result"><em>最後才選型</em><b>合適方案與可靠交付</b><span>降低客戶成本與風險，建立長期信任</span></div></div>`,
     '此圖是使命與價值觀的應用示意，不新增產品設計或審核 SOP。'
   ));
 
@@ -27,7 +27,7 @@
   logic?.insertAdjacentHTML('afterend', visual(
     '為什麼增加詢價，還不能解除成長瓶頸？',
     '把表面現象、真正原因與資源選擇放在同一條因果鏈，避免直接從問題跳到工作清單。',
-    `<div class="explain-flow" style="--steps:3">${node('SITUATION｜現象', '一線案例與量產信任不足', '新產品驗證中，既有產品受成本結構限制')}${node('ROOT CAUSE｜根因', '供應夥伴身份尚未完成轉換', '必須同時建立車用能力與可支撐大量供應的模式', 'is-gate')}${node('CORE STRATEGY｜選擇', '核心自己掌握，供應鏈整合', '集中 Non-PTC Coolant 成長引擎，深化 OEM＋Tier 1 開發', 'is-outcome')}</div>`,
+    `<div class="diagnosis-map"><div><em>看見的現象</em><span>缺少一線車廠案例</span><span>新產品仍在驗證</span><span>大量市場的成本限制</span></div><div class="diagnosis-root"><em>共同根因</em><b>尚未成為車廠願意長期採用、可大量量產的核心供應夥伴</b></div><div><em>資源應投向</em><span>Non-PTC Coolant 成長引擎</span><span>OEM＋Tier 1 信任與車用能力</span><span>核心掌握 × 全球供應鏈整合</span></div></div>`,
     '因果關係整理自本頁正式戰略；「增加詢價」不能替代信任、成本與量產能力建設。'
   ));
 
@@ -35,7 +35,7 @@
   c?.querySelector('.stage-explainer .stage-example')?.insertAdjacentHTML('afterend', visual(
     '如何判斷本週工作真的推進了 Stage？',
     '以 Coolant Heater 的 Sample → Validation 為閱讀示例：工作要能指向下一個可查證結果。',
-    `<div class="explain-flow">${node('目前位置', 'Sample｜樣品導入', '先確認專案所處 Stage 與現有基準')}${node('本週行動', '處理樣品與驗證的 Blocker', '明確 Owner、Next Action 與期限')}${node('進展證據', '取得客戶驗證進展紀錄', '以 CRM 或正式專案資料留存可查證依據', 'is-gate')}${node('下一結果', 'Validation｜驗證推進', '依正式專案 Gate 判斷是否真的前進', 'is-outcome')}</div>`,
+    `<div class="evidence-bridge"><div class="evidence-stage"><em>目前 Stage</em><b>Sample</b><span>樣品導入；確認現況與基準</span></div><div class="evidence-gate"><em>本週要跨過的關卡</em><b>Next Action → 可查證證據</b><span>處理驗證 Blocker，明確 Owner 與期限</span><span>客戶驗證進展留在 CRM 或正式專案紀錄</span><small>只有活動量、沒有可驗證結果，仍留在原 Stage</small></div><div class="evidence-stage is-next"><em>下一個結果</em><b>Validation</b><span>依專案核定 Gate 判斷是否進入驗證推進</span></div></div>`,
     '此為閱讀示例；正式 Stage Gate、證據要求及責任人仍以各專案核定規則為準。'
   ));
 
