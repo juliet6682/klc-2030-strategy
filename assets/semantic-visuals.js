@@ -67,6 +67,6 @@
     if (!chart) continue;
     chart.id = `insight-${route}`;
     const [alt, caption] = scenes[route];
-    chart.querySelector('h3')?.nextElementSibling?.insertAdjacentHTML('afterend', `<figure class="story-scene"><img src="/assets/story-scenes/${route}.webp?v=2" alt="${alt}" width="1536" height="1024" loading="lazy" decoding="async"><figcaption>${caption}</figcaption></figure>`);
+    chart.querySelector('h3')?.nextElementSibling?.insertAdjacentHTML('afterend', `<figure class="story-scene"><img src="/assets/story-scenes/${route}.webp?v=3" alt="${alt}" width="1536" height="1024" loading="lazy" decoding="async"><figcaption>${caption}</figcaption></figure>`);
   }
 })();
