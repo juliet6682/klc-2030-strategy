@@ -1,6 +1,6 @@
-/* Each illustration is a content diagram tied to an explicit passage, not a motif. */
+/* Story scenes illustrate the chapter's decision; the adjacent map carries exact terms. */
 (() => {
-  const visual = (title, intro, body, caption = '') => `<aside class="explain-visual" aria-label="資訊圖：${title}"><span class="explain-kicker">本章資訊圖 · VISUAL EXPLAINER</span><h3>${title}</h3><p>${intro}</p>${body}${caption ? `<p class="explain-caption">${caption}</p>` : ''}</aside>`;
+  const visual = (title, intro, body, caption = '') => `<aside class="explain-visual" aria-label="情境插畫與解讀：${title}"><span class="explain-kicker">情境插畫與解讀</span><h3>${title}</h3><p>${intro}</p>${body}${caption ? `<p class="explain-caption">${caption}</p>` : ''}</aside>`;
   const node = (tag, title, detail, kind = '') => `<div class="explain-node ${kind}"><em>${tag}</em><b>${title}</b><span>${detail}</span></div>`;
   const page = key => document.querySelector(`[data-route-page="${key}"]`);
   const panelByEyebrow = (root, text) => [...root.querySelectorAll('.panel')].find(p => p.querySelector(':scope > .eyebrow')?.textContent.trim() === text);
@@ -53,13 +53,20 @@
     'D 團隊遊戲用於強化 C 的關鍵行為；E 提供各層用詞的正式定義，不是另一層計畫。'
   ));
 
+  const scenes = {
+    home: ['團隊從產品方向、客戶選擇、樣品驗證到跨部門檢討的情境插畫', '看圖：同一項車用加熱工作，從方向選擇走到樣品、驗證與團隊檢討；下方對應 A 到 D，E 是共用語言。'],
+    a: ['工程師比較加熱方案並觀察車用鏡頭效果的情境插畫', '看圖：先理解客戶的應用情境，再比較方案並驗證效果；使命是選型的依據。'],
+    b: ['加熱器團隊從產品開發走向驗證、品質與車廠量產的情境插畫', '看圖：可用的產品還須通過驗證、品質與供應協作，才能走向車廠長期採用。'],
+    c: ['Coolant Heater 樣品經過交接、驗證和車輛整合的情境插畫', '看圖：樣品完成只是目前狀態；跨過驗證關卡需要責任人、阻礙處理和可查證紀錄。'],
+    d: ['跨部門團隊檢查樣品與驗證證據後推進里程碑的情境插畫', '看圖：團隊先核對實際成果和證據，再推進里程碑；投入活動本身不直接等於積分。'],
+    e: ['團隊在知識庫辨識管理定義並整理資料的情境插畫', '看圖：遇到不同管理問題時，先找到相應層級的正式定義，再把工作歸入共同語言。']
+  };
   for (const route of ['home', 'a', 'b', 'c', 'd', 'e']) {
     const section = page(route);
     const chart = section?.querySelector('.explain-visual');
     if (!chart) continue;
     chart.id = `insight-${route}`;
-    const lead = route === 'home' ? section.querySelector('.story-hero-copy') : section.querySelector('.page-titlebar .copy');
-    lead?.insertAdjacentHTML('beforeend', `<a class="insight-jump" href="#insight-${route}">查看${route === 'home' ? '策略' : '本章'}資訊圖 <span aria-hidden="true">↓</span></a>`);
+    const [alt, caption] = scenes[route];
+    chart.querySelector('h3')?.nextElementSibling?.insertAdjacentHTML('afterend', `<figure class="story-scene"><img src="/assets/story-scenes/${route}.webp" alt="${alt}" width="1536" height="1024" loading="lazy" decoding="async"><figcaption>${caption}</figcaption></figure>`);
   }
-  if (location.hash.startsWith('#insight-')) document.querySelector(location.hash)?.scrollIntoView();
 })();
