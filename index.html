@@ -175,6 +175,23 @@ body[data-route="a"] .panel{border-top:4px solid rgba(61,157,221,.18)}body[data-
 .score-scale-note{font-size:13px;color:#557082;line-height:1.55;margin:12px 0 0}
 .score-scale-note strong{color:#315a73}
 @media(max-width:520px){.score-stage-head b{font-size:14px}.score-stage-head small{font-size:10px}}
+/* Content-led diagrams: each visual answers a management question. */
+.explain-visual{margin:18px 0;padding:19px 20px;background:#f7fbfc;border:1.5px solid #d4e5ed;border-radius:22px;min-width:0;overflow:hidden}
+.explain-visual h3,.explain-visual h4{margin:0 0 7px;color:#254c68}.explain-visual h3{font-size:18px}.explain-visual h4{font-size:15px}
+.explain-visual p{margin:0 0 12px;color:#526f82;font-size:14px;line-height:1.6}
+.explain-flow{display:grid;grid-template-columns:repeat(var(--steps,4),minmax(0,1fr));gap:10px;align-items:stretch;min-width:0}
+.explain-node{position:relative;padding:14px 13px;border:1.5px solid #d8e7ec;border-radius:16px;background:#fff;min-width:0}
+.explain-node:not(:last-child)::after{content:'→';position:absolute;right:-12px;top:50%;transform:translateY(-50%);z-index:1;width:22px;height:22px;line-height:21px;text-align:center;color:#417b9a;background:#f7fbfc;border-radius:50%;font-weight:900}
+.explain-node b{display:block;color:#254b68;font-size:15px;margin:0 0 5px}.explain-node span{display:block;color:#536f80;font-size:13px;line-height:1.5}
+.explain-node em{display:block;color:#277c9c;font-style:normal;font-size:11px;font-weight:850;letter-spacing:.04em;margin-bottom:5px}
+.explain-node.is-outcome{background:#ecf7f5;border-color:#b8dcd2}.explain-node.is-gate{background:#fff8e8;border-color:#ebd6a1}
+.explain-caption{font-size:12px!important;margin:11px 0 0!important;color:#587489!important}
+.explain-map{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.explain-map .explain-node::after{content:none}
+.explain-map .explain-node small{display:block;color:#947a4a;font-size:11px;font-weight:800;margin-top:8px}
+.explain-contrast{display:grid;grid-template-columns:1fr auto 1fr;align-items:stretch;gap:10px}.explain-contrast .explain-node::after{content:none}.explain-contrast>.explain-arrow{align-self:center;color:#417b9a;font-weight:900;font-size:23px}
+.explain-choice{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.explain-choice .explain-node::after{content:none}
+@media(max-width:800px){.explain-flow{grid-template-columns:repeat(2,minmax(0,1fr))}.explain-node:nth-child(2)::after{content:none}.explain-map{grid-template-columns:repeat(2,minmax(0,1fr))}.explain-choice{grid-template-columns:1fr}}
+@media(max-width:560px){.explain-visual{padding:15px}.explain-flow{grid-template-columns:1fr}.explain-node:not(:last-child)::after{content:'↓';right:auto;left:50%;top:auto;bottom:-14px;transform:translateX(-50%)}.explain-contrast{grid-template-columns:1fr}.explain-contrast>.explain-arrow{justify-self:center;transform:rotate(90deg)}.explain-map{grid-template-columns:1fr 1fr}.explain-node{padding:12px}.explain-node b{font-size:14px}}
 </style></head><body data-audience="board"><header class="site-header"><div class="site-header-inner"><a class="brand" href="/"><span class="brand-mark">KLC</span><span>KLC 2030<small>Strategy Storybook</small></span></a><nav class="site-nav"><a class="" href="/">首頁</a><a class="" href="/a/">A 藍圖</a><a class="" href="/b/">B 戰略</a><a class="" href="/c/">C 戰術</a><a class="" href="/d/">D 團隊遊戲</a><a class="" href="/e/">E 知識定義</a></nav><div class="header-tools"><button class="aud-btn" data-aud="board" type="button">董事會</button><button class="aud-btn" data-aud="manager" type="button">主管</button><button class="aud-btn" data-aud="staff" type="button">職員</button><button class="print-btn" type="button">列印</button></div></div></header><main class="wrap"><section data-route-page="home" hidden=""><section class="story-hero">
   <div class="story-hero-copy">
     <span class="chip">KLC 2030 Strategy Storybook</span>
@@ -312,5 +329,5 @@ body[data-route="a"] .panel{border-top:4px solid rgba(61,157,221,.18)}body[data-
   });
 })();
 
-</script><div class="image-lightbox" id="imageLightbox" aria-hidden="true"><button class="lightbox-close" type="button" aria-label="關閉">×</button><div class="lightbox-stage"><img id="lightboxImage" alt=""/><div id="lightboxCaption" class="lightbox-caption"></div></div></div></body></html>
+</script><script defer src="/assets/semantic-visuals.js"></script><div class="image-lightbox" id="imageLightbox" aria-hidden="true"><button class="lightbox-close" type="button" aria-label="關閉">×</button><div class="lightbox-stage"><img id="lightboxImage" alt=""/><div id="lightboxCaption" class="lightbox-caption"></div></div></div></body></html>
 <!-- v13: emoji-free UI icons; image integrity hardened; primary visuals remain raster WebP, SVG reserved for icons/decorative motifs; audience handlers deduplicated; lightbox interaction enabled -->
