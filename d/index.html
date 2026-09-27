@@ -261,5 +261,44 @@ body[data-route="a"] .panel{border-top:4px solid rgba(61,157,221,.18)}body[data-
 (function(){const tactics=[{id:'C1',name:'2030 十億以上營收成長路線圖',type:'生產型',goal:'2030 三大產品基礎盤約 11 億；10 億是最低經營門檻。',y2027:'PTC 約 2.46 億、Flexible 約 0.48 億、Coolant 樣品／小量為主。',end:'2030：PTC 2 億、Flexible 1 億、Coolant 8 億。',kpi:'各產品營收、Ramp、Strategic Account 貢獻。',pending:'2027–2029 為規劃假設。'},{id:'C2',name:'Coolant Heater Tier 1 Strategic Account',type:'生產型',goal:'2030 Coolant 8 億／8–10 萬台，採 1 大型核心案＋2 中型衛星案。',y2027:'8 有效專案 → 6 Sample → 4 Validation → 2 Design-in。',end:'Nomination＝取得專案；SOP＝成功量產。',kpi:'Stage Conversion、Annual Volume、Target SOP、Revenue Potential。',pending:'8→6→4→2 為第一版假設。'},{id:'C3',name:'PTC Heater 世代管理＋Cost Down',type:'混合型',goal:'守住現金流、改善大量市場成本競爭力，同時完成世代轉換。',y2027:'營收約 2.46 億；BOM／原料成本降低 8%。',end:'2030 約 2 億。',kpi:'陶瓷片、鋁材、人工；BOM、工時、良率、報廢、毛利。',pending:'建立成本基準與最低毛利門檻。'},{id:'C4',name:'Flexible Heater 車用應用擴張',type:'生產＋發展',goal:'把客製 Know-how 變成可複用平台。',y2027:'3 平台；6 有效車用專案；3 Cross-sell。',end:'2030 約 1 億。',kpi:'ADAS、Sensor、Defogging 平台與 Revenue Pipeline。',pending:'持續細化各 Stage。'},{id:'C5',name:'全球供應鏈整合與成本競爭力',type:'發展型',goal:'核心技術自主＋全球供應鏈整合。',y2027:'Make／Buy／Partner、TCO、Partner Network、Quality/IP Control。',end:'形成可支撐 Tier 1 大量量產的全球供應網路。',kpi:'Cost Gap、Partner、Pilot、Second Source、Savings。',pending:'夥伴與 Pilot 數為規劃假設。'},{id:'C6',name:'Automotive Development & Quality Capability',type:'發展型',goal:'從有 IATF 升級成真正用 Automotive 方法跑專案。',y2027:'Gap Assessment、Project Framework，於 Coolant／重點案試行。',end:'可重複承接大型 Tier 1／OEM 並穩定量產。',kpi:'APQP、Gate、Validation、Issue Closure、Lessons Learned。',pending:'責任人與導入範圍待核定。'},{id:'C7',name:'全球在地化供應與海外據點',type:'發展型',goal:'2030 建立 2 個海外營運節點。',y2027:'完成美國／泰國／日本三地比較，形成第一據點 Decision Package。',end:'2030 兩個據點正式運作。',kpi:'Customer、成本、供應鏈、人才、法規、地緣風險。',pending:'2028 第一據點為規劃假設。'},{id:'C8',name:'2030 上櫃暨資本結構升級',type:'發展型',goal:'2030 年以前正式掛牌上櫃。',y2027:'完成 Readiness Gap 與 2028–2030 Master Roadmap。',end:'治理、財務、內控、股權、組織、系統、ESG／IR 成熟。',kpi:'Gap Closure、Roadmap、治理、內控、Growth Story。',pending:'依當時法規與專業顧問確認。'}];const tb=document.getElementById('tacticButtons'),td=document.getElementById('tacticDetail');function showT(i){if(!tb||!td)return;tb.querySelectorAll('button').forEach((b,j)=>b.classList.toggle('active',i===j));const t=tactics[i];td.innerHTML=`<div class="eyebrow">${t.id} · ${t.type}</div><h3>${t.name}</h3><div class="grid2"><div><b>為什麼做</b><p>${t.goal}</p><b>2027</b><p>${t.y2027}</p></div><div><b>2030／完成狀態</b><p>${t.end}</p><b>主要衡量</b><p>${t.kpi}</p><b>仍待決策</b><p class="muted">${t.pending}</p></div></div>`;}if(tb){tactics.forEach((t,i)=>{const b=document.createElement('button');b.innerHTML=`<b>${t.id}</b><br><span>${t.name}</span>`;b.addEventListener('click',()=>showT(i));tb.appendChild(b);});showT(0);}function drawChart(){const c=document.getElementById('revChart');if(!c)return;const ctx=c.getContext('2d'),W=c.width,H=c.height;ctx.clearRect(0,0,W,H);const pad={l:55,r:25,t:30,b:45},xs=[2026,2027,2028,2029,2030],series=[['PTC',[2.24,2.46,2.4,2.2,2.0],'#c56f40'],['Flexible',[.42,.48,.6,.8,1.0],'#7e8e5f'],['Coolant',[0,.05,1,4,8],'#4baad3']];ctx.strokeStyle='#d8cbb7';ctx.lineWidth=1;for(let i=0;i<=4;i++){const y=pad.t+(H-pad.t-pad.b)*i/4;ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(W-pad.r,y);ctx.stroke();ctx.fillStyle='#766d64';ctx.font='13px sans-serif';ctx.fillText(String(8-2*i),18,y+4);}xs.forEach((x,i)=>{const px=pad.l+(W-pad.l-pad.r)*i/4;ctx.fillStyle='#766d64';ctx.fillText(x,px-15,H-15);});series.forEach(([name,data,col],si)=>{ctx.strokeStyle=col;ctx.lineWidth=4;ctx.beginPath();data.forEach((v,i)=>{const px=pad.l+(W-pad.l-pad.r)*i/4,py=pad.t+(H-pad.t-pad.b)*(1-v/8);i?ctx.lineTo(px,py):ctx.moveTo(px,py);});ctx.stroke();ctx.fillStyle=col;ctx.fillText(name,W-115,45+si*22);});}drawChart();window.addEventListener('resize',drawChart);})();
 (function(){const scores=[['Target Qualification',5],['Keyman／Technical Contact',10],['Technical Engagement',15],['RFQ／Project',20],['Sample／Prototype',30],['Validation Start',50],['Validation Pass／Gate',80],['Design-in',120],['Nomination',200],['CRM Discipline',5],['Blocker Bonus（示例）',30]];const sl=document.getElementById('scoreList'),st=document.getElementById('scoreTotal');if(sl&&st){scores.forEach(([n,p])=>{const l=document.createElement('label');l.innerHTML=`<span><input type="checkbox" data-p="${p}"> ${n}</span><b>+${p}</b>`;sl.appendChild(l);});function sum(){let n=0;sl.querySelectorAll('input:checked').forEach(x=>n+=Number(x.dataset.p));st.textContent=n;}sl.addEventListener('change',sum);const reset=document.getElementById('scoreReset');if(reset)reset.addEventListener('click',()=>{sl.querySelectorAll('input').forEach(x=>x.checked=false);sum();});}const ranks=[['Team A',245,'#d2a344'],['Team B',185,'#c96e3f'],['Team C',160,'#909466'],['Team D',95,'#54abd5']];const rl=document.getElementById('rankList');if(rl){ranks.forEach(([n,s,c],i)=>{const e=document.createElement('div');e.className='rankrow';e.innerHTML=`<div class="kpi"><span>#${i+1} <b>${n}</b></span><b>${s}</b></div><div class="meter"><span style="width:${s/245*100}%;background:${c}"></span></div>`;rl.appendChild(e);});}})();
 (function(){const input=document.getElementById('knowledgeSearch');const grid=document.getElementById('knowledgeGrid');if(!input||!grid)return;const cards=[...grid.querySelectorAll('.knowledge-term')];const count=document.getElementById('knowledgeCount');const empty=document.getElementById('knowledgeEmpty');function run(){const q=input.value.trim().toLowerCase();let n=0;cards.forEach(c=>{const hit=!q||c.textContent.toLowerCase().includes(q)||c.dataset.term.includes(q);c.hidden=!hit;if(hit)n++;});count.textContent=`顯示 ${n} / ${cards.length} 個正式定義`;empty.hidden=n!==0;}input.addEventListener('input',run);run();})();
+
+(function(){
+  window.addEventListener('DOMContentLoaded',function(){
+    const box=document.getElementById('imageLightbox');
+    const full=document.getElementById('lightboxImage');
+    const caption=document.getElementById('lightboxCaption');
+    if(!box||!full)return;
+    const closeBtn=box.querySelector('.lightbox-close');
+    const targets=document.querySelectorAll('.zoomable-info,.chapter-visual img,.d-hero-visual img,.section-illustration');
+    function closeBox(){
+      box.classList.remove('open');
+      box.setAttribute('aria-hidden','true');
+      document.body.classList.remove('no-scroll');
+      full.removeAttribute('src');
+    }
+    targets.forEach(function(el){
+      el.setAttribute('tabindex','0');
+      el.setAttribute('role','button');
+      el.setAttribute('aria-label',(el.alt||'資訊圖')+'，點擊放大');
+      function openBox(){
+        full.src=el.currentSrc||el.src;
+        full.alt=el.alt||'放大資訊圖';
+        const figure=el.closest('figure');
+        const figcaption=figure&&figure.querySelector('figcaption');
+        if(caption)caption.textContent=figcaption?figcaption.textContent:(el.alt||'');
+        box.classList.add('open');
+        box.setAttribute('aria-hidden','false');
+        document.body.classList.add('no-scroll');
+        if(closeBtn)closeBtn.focus();
+      }
+      el.addEventListener('click',openBox);
+      el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openBox();}});
+    });
+    if(closeBtn)closeBtn.addEventListener('click',closeBox);
+    box.addEventListener('click',function(e){if(e.target===box)closeBox();});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&box.classList.contains('open'))closeBox();});
+  });
+})();
+
 </script><div class="image-lightbox" id="imageLightbox" aria-hidden="true"><button class="lightbox-close" type="button" aria-label="關閉">×</button><div class="lightbox-stage"><img id="lightboxImage" alt=""/><div id="lightboxCaption" class="lightbox-caption"></div></div></div></body></html>
-<!-- v13: emoji-free UI icons; image integrity hardened; primary visuals remain raster WebP, SVG reserved for icons/decorative motifs; audience handlers deduplicated -->
+<!-- v13: emoji-free UI icons; image integrity hardened; primary visuals remain raster WebP, SVG reserved for icons/decorative motifs; audience handlers deduplicated; lightbox interaction enabled -->
